@@ -15,9 +15,13 @@ void setup() {
 }
 
 void loop() {
-  pot_val = map(analogRead(POT_INPUT), 0, 1023, 0, 255);
+  pot_val = map(analogRead(POT_INPUT), 0, 1023, 0, 64);
   tof = ultrasonic.timing();
   dist = ultrasonic.convert(tof, Ultrasonic::CM);
-  
-  Serial.println(dist);
+
+  Serial.print("Sensor:");
+  Serial.print(dist);
+  Serial.print("\t");
+  Serial.print("Knob:");
+  Serial.println(pot_val);
 }
